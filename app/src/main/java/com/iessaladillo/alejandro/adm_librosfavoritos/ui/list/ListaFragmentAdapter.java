@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ListaFragmentAdapter extends ListAdapter<Libro, ListaFragmentAdapter.ViewHolder> {
 
+    private OnSinopsiShow onSinopsiShow;
+
     protected ListaFragmentAdapter() {
         super(new DiffUtil.ItemCallback<Libro>() {
             @Override
@@ -31,6 +33,10 @@ public class ListaFragmentAdapter extends ListAdapter<Libro, ListaFragmentAdapte
                         TextUtils.equals(oldItem.getYear(), newItem.getYear());
             }
         });
+    }
+
+    public void setOnSinopsiShow(OnSinopsiShow onSinopsiShow) {
+        this.onSinopsiShow = onSinopsiShow;
     }
 
     @NonNull
@@ -63,6 +69,8 @@ public class ListaFragmentAdapter extends ListAdapter<Libro, ListaFragmentAdapte
         public ViewHolder(@NonNull FragmentListaItemBinding binding) {
             super(binding.getRoot());
             b = binding;
+
+            b.clItem.setOnClickListener(v -> onSinopsiShow.onItemClick(getAdapterPosition()));
         }
 
         void bind(Libro libro) {

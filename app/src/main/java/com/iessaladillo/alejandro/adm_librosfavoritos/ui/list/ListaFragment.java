@@ -98,6 +98,7 @@ public class ListaFragment extends Fragment {
 
     private void setupRecyclerView() {
         listAdapter = new ListaFragmentAdapter();
+        listAdapter.setOnSinopsiShow(position -> setupBottomSheet(listAdapter.getItem(position).getTitle(), listAdapter.getItem(position).getSinopsis()));
 
         b.lstLista.setHasFixedSize(true);
         b.lstLista.setLayoutManager(new GridLayoutManager(requireContext(),
@@ -117,10 +118,11 @@ public class ListaFragment extends Fragment {
                 if (direction == ItemTouchHelper.END) {
                     String nombre = listAdapter.getItem(viewHolder.getAdapterPosition()).getTitle();
                     viewModel.deleteLibro(listAdapter.getItem(viewHolder.getAdapterPosition()));
-
-                    Snackbar.make(b.lblEmptyView, getString(R.string.snackBar_deshacer, nombre),
-                            Snackbar.LENGTH_LONG).setAction(getString(R.string.deshacer_action),
-                            v -> viewModel.addDeleteLibro()).show();
+                    if (settings.getBoolean(getString(R.string.prefDeshacer_key), true)) {
+                        Snackbar.make(b.lblEmptyView, getString(R.string.snackBar_deshacer, nombre),
+                                Snackbar.LENGTH_LONG).setAction(getString(R.string.deshacer_action),
+                                v -> viewModel.addDeleteLibro()).show();
+                    }
                 }
             }
         });
