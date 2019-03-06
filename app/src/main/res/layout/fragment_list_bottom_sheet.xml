@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:behavior_hideable="true"
-        app:behavior_peekHeight="0dp">
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        >
 
         <TextView
             android:id="@+id/lblTitle"
@@ -35,7 +37,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblTitle">
+            app:layout_constraintTop_toBottomOf="@+id/lblTitle"
+
+            >
 
             <TextView
                 android:id="@+id/lblSinopsis"

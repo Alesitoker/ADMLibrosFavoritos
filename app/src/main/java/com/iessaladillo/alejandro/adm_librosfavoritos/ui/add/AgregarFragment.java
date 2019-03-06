@@ -1,5 +1,6 @@
 package com.iessaladillo.alejandro.adm_librosfavoritos.ui.add;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -26,12 +27,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 
 public class AgregarFragment extends Fragment {
 
     private FragmentAgregarBinding b;
     private AgregarFragmentViewModel viewModel;
     private NavController navController;
+    private SharedPreferences settings;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class AgregarFragment extends Fragment {
         viewModel = ViewModelProviders.of(this,
                 new AgregarFragmentViewModelFactory(new RepositoryImpl(AppDatabase.getInstance(requireContext().getApplicationContext()).libroDao()))).get(AgregarFragmentViewModel.class);
         navController = NavHostFragment.findNavController(this);
+        settings = PreferenceManager.getDefaultSharedPreferences(requireContext());
         setupViews();
     }
 
@@ -85,6 +89,9 @@ public class AgregarFragment extends Fragment {
         Libro libro;
         KeyboardUtils.hideSoftKeyboard(requireActivity());
         if (comprobarCampos()) {
+            if (settings.getBoolean(getString(R.string.prefConfirmacion_key), true)) {
+
+            }
             libro = new Libro(0, portada(),
                     b.txtTitle.getText().toString(), b.txtAutor.getText().toString(),
                     b.txtYear.getText().toString(), sinopsis());

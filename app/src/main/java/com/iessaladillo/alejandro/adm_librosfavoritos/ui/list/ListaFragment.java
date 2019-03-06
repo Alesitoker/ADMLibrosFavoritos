@@ -1,5 +1,6 @@
 package com.iessaladillo.alejandro.adm_librosfavoritos.ui.list;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -39,6 +41,7 @@ public class ListaFragment extends Fragment {
     private NavController navController;
     private ListaFragmentAdapter listAdapter;
     private BottomSheetBehavior<ConstraintLayout> bsb;
+    private SharedPreferences settings;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class ListaFragment extends Fragment {
         viewModel = ViewModelProviders.of(this,
                 new ListaFragmentViewModelFactory(new RepositoryImpl(AppDatabase.getInstance(requireContext()).libroDao()))).get(ListaFragmentViewModel.class);
         navController = NavHostFragment.findNavController(this);
+        settings = PreferenceManager.getDefaultSharedPreferences(requireContext());
         setupViews();
         observeLibros();
     }
@@ -75,11 +79,10 @@ public class ListaFragment extends Fragment {
 
         b.fab.setOnClickListener(v -> navigateToAgregar());
         b.lblEmptyView.setOnClickListener(v -> navigateToAgregar());
-//        bsb = BottomSheetBehavior.from(b.bSheet.bottomSheet);
-//        setupBottomSheet();
+        bsb = BottomSheetBehavior.from(b.bSheet.bottomSheet);
     }
 
-    private void setupBottomSheet() {
+    private void setupBottomSheet(String title, String sinopsis) {
         bsb.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View view, int i) {
