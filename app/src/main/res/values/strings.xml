@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ADM-LibrosFavoritos</string>
+    <string name="list_empty">No hay libros</string>
+    <string name="txtTitleLayout_hint">Titulo</string>
+    <string name="txtAutorLayout_hint">Autor/a</string>
+    <string name="txtYearLayout_hint">Año de publicación</string>
+    <string name="txtPortadaLayout_hint">URL Portada</string>
+    <string name="txtSinopsisLayout_hint">Sinopsis</string>
+    <string name="ListaFragment_title">Mis libros favoritos</string>
+    <string name="AgregarFragment_title">Agregar libro</string>
+    <string name="agregar_save">Guardar</string>
+</resources>
