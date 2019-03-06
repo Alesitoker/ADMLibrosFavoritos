@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.iessaladillo.alejandro.adm_librosfavoritos.data.local.model.Libro;
 import com.iessaladillo.alejandro.adm_librosfavoritos.databinding.FragmentListaItemBinding;
+import com.iessaladillo.alejandro.adm_librosfavoritos.utils.ValidationsUtils;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -68,7 +69,9 @@ public class ListaFragmentAdapter extends ListAdapter<Libro, ListaFragmentAdapte
             b.lblAutor.setText(libro.getAutor());
             b.lblFecha.setText(libro.getYear());
             b.lblTitle.setText(libro.getTitle());
-            Picasso.with(b.getRoot().getContext()).load(libro.getPortada()).into(b.imgPortada);
+            if (ValidationsUtils.isValidUrl(libro.getPortada())) {
+                Picasso.with(b.getRoot().getContext()).load(libro.getPortada()).into(b.imgPortada);
+            }
         }
     }
 }

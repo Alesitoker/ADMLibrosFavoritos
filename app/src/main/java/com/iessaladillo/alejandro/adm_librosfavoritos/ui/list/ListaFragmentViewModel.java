@@ -26,4 +26,12 @@ public class ListaFragmentViewModel extends ViewModel {
         libroDelete = libro;
         repository.deleteLibro(libro);
     }
+
+    public LiveData<List<Libro>> getLibros() {
+        return libros;
+    }
+
+    public void addDeleteLibro() {
+        repository.insertLibro(libroDelete);
+    }
 }

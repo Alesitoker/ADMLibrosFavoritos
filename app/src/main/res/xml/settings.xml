@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreferenceCompat
+        android:defaultValue="@bool/prefDeshacer_defaultValue"
+        android:icon="@drawable/ic_redo_black_24dp"
+        android:key="@string/prefDeshacer_key"
+        android:summaryOff="@string/prefDeshacer_summaryOff"
+        android:summaryOn="@string/prefDeshacer_summaryOn"
+        android:switchTextOff="@string/prefDeshacer_switchTextOff"
+        android:switchTextOn="@string/prefDeshacer_switchTextOn"
+        android:title="@string/prefDeshacer_title"/>
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/prefConfirmacion_defaultValue"
+        android:icon="@drawable/ic_check_white_24dp"
+        android:key="@string/prefConfirmacion_key"
+        android:summaryOff="@string/prefConfirmacion_summaryOff"
+        android:summaryOn="@string/prefConfirmacion_summaryOn"
+        android:title="@string/prefConfirmacion_title"/>
+
+</PreferenceScreen>

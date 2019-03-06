@@ -10,9 +10,16 @@
         <action
             android:id="@+id/actionListaToAgregar"
             app:destination="@id/agregarFragment" />
+        <action
+            android:id="@+id/actionListaToSettings"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/agregarFragment"
         android:name="com.iessaladillo.alejandro.adm_librosfavoritos.ui.add.AgregarFragment"
         android:label="@string/AgregarFragment_title" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.iessaladillo.alejandro.adm_librosfavoritos.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

@@ -6,8 +6,10 @@ import com.iessaladillo.alejandro.adm_librosfavoritos.data.local.model.Libro;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Query;
 
+@Dao
 public interface LibroDao extends BaseDao<Libro> {
 
     @Query("SELECT * FROM libro")

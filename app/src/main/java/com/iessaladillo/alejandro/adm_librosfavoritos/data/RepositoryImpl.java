@@ -1,5 +1,7 @@
 package com.iessaladillo.alejandro.adm_librosfavoritos.data;
 
+import android.os.AsyncTask;
+
 import com.iessaladillo.alejandro.adm_librosfavoritos.data.local.LibroDao;
 import com.iessaladillo.alejandro.adm_librosfavoritos.data.local.model.Libro;
 
@@ -17,16 +19,20 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public LiveData<List<Libro>> queryLibros() {
-        return null;
+        return libroDao.queryLibros();
     }
 
     @Override
     public void insertLibro(Libro libro) {
-
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(() -> {
+            libroDao.insert(libro);
+        });
     }
 
     @Override
     public void deleteLibro(Libro libro) {
-
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(() -> {
+            libroDao.delete(libro);
+        });
     }
 }

@@ -9,4 +9,17 @@
     <string name="ListaFragment_title">Mis libros favoritos</string>
     <string name="AgregarFragment_title">Agregar libro</string>
     <string name="agregar_save">Guardar</string>
+    <string name="prefConfirmacion_key">prefConfirmacion</string>
+    <string name="prefConfirmacion_summaryOff">No</string>
+    <string name="prefConfirmacion_summaryOn">Si</string>
+    <string name="prefConfirmacion_title">¿Mostrar confimacion?</string>
+    <string name="prefDeshacer_key">prefDeshacer</string>
+    <string name="prefDeshacer_summaryOff">No</string>
+    <string name="prefDeshacer_summaryOn">Yes</string>
+    <string name="prefDeshacer_switchTextOff">No</string>
+    <string name="prefDeshacer_switchTextOn">Yes</string>
+    <string name="prefDeshacer_title">Deshacer eliminacion</string>
+    <string name="main_mnuSettings">Settings</string>
+    <string name="snackBar_deshacer">%s eliminado</string>
+    <string name="deshacer_action">Deshacer</string>
 </resources>
